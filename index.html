@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Wealth Tracker</title></head>
+<body>
+<h1>Zero-Cost Wealth Tracker</h1>
+<div id="summary">Loading...</div>
+<script>
+// Basic JS interactivity: simulate transactions
+let transactions = [];
+function addTxn() {
+  const amt = prompt('Amount:');
+  const cat = prompt('Category:');
+  transactions.push({amt, cat});
+  document.getElementById('summary').innerHTML = `Total: ${transactions.reduce((sum, t) => sum + parseFloat(t.amt), 0)}`;
+}
+</script>
+<button onclick="addTxn()">Add Transaction</button>
+</body>
+</html>
