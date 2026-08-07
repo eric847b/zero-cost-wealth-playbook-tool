@@ -22,10 +22,11 @@ python tracker.py summary
 
 Ledger path: `data/ledger.csv`  
 Sample rows: `data/sample_ledger.csv`  
+First-week sample: `data/sample_first_week_ledger.csv`  
 Columns: `date, type, amount, category, note`
 
 ### Free-tool path
-1. Run the CLI to log transactions (or copy sample ledger).
+1. Run the CLI to log transactions (or copy a sample ledger).
 2. Open CSV in **LibreOffice Calc** or **Google Sheets**.
 3. Pivot by `category` / `type` for budgets — no paid BI tools.
 
@@ -47,11 +48,13 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 |------|---------|
 | [templates/client_ledger_template.csv](templates/client_ledger_template.csv) | Clean starter ledger for a new client |
 | [templates/client_playbook.md](templates/client_playbook.md) | One-page adaptation guide |
+| [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md) | Day-0 to Day-7 checklist to hand the client |
 | [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging, pricing, delivery (no paid tools) |
+| [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
 
 ### 3-step delivery checklist
-1. Copy the three template files + tracker.py + export.py into a client folder (or fork).
-2. Walk the client through `tracker.py add` and `export.py --client`.
+1. Copy the template files + tracker.py + export.py into a client folder (or fork).
+2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
 3. Hand over the first Markdown/PDF report and the weekly loop from the client playbook.
 
 See pricing notes for example offer tiers. Everything stays zero fixed cost.
@@ -71,4 +74,5 @@ See pricing notes for example offer tiers. Everything stays zero fixed cost.
 - MVP tracker shipped (issue #4).
 - Playbook + sample ledger + export shipped (issue #5).
 - Client-template pack shipped (issue #6).
+- Client onboarding checklist + first-week sample shipped (issue #9).
 - Keep everything zero-cost.

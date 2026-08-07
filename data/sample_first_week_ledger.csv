@@ -1,0 +1,10 @@
+date,type,amount,category,note
+2026-08-01,income,320.00,freelance,landing page deposit
+2026-08-01,expense,14.99,software,domain + DNS
+2026-08-02,expense,4.50,tools,USB drive
+2026-08-03,income,85.00,templates,Notion client board sale
+2026-08-04,expense,22.00,hosting,static site month
+2026-08-05,income,150.00,consulting,1h tracker setup call
+2026-08-06,expense,9.00,software,email alias
+2026-08-07,income,200.00,freelance,balance on landing page
+2026-08-07,expense,18.00,tools,backup drive
