@@ -12,7 +12,7 @@ python tracker.py add 12.50 expense software "domain renewal"
 python tracker.py summary
 ```
 
-- Ledger: `data/ledger.csv` (or start from `data/sample_ledger.csv`)
+- Ledger: `data/ledger.csv` (or start from `data/sample_ledger.csv` / `data/sample_first_week_ledger.csv`)
 - Import into **LibreOffice Calc** or **Google Sheets** for pivots
 - Columns: `date, type, amount, category, note`
 
@@ -30,6 +30,8 @@ python tracker.py summary
 1. **Templates** — Package the tracker + this playbook as a consulting deliverable for freelancers who want a simple system.
 2. **Customization** — Offer a one-time setup (categories, sample goals) billed hourly; still zero product cost.
 3. **Open-source inbound** — Keep the repo public; answer issues; convert attention into paid help or referrals.
+
+For client delivery, use the [onboarding checklist](templates/client_onboarding_checklist.md) and the first-week sample ledger so the client sees a full week on day 0.
 
 ## 4. Weekly loop
 
