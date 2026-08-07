@@ -2,7 +2,11 @@
 
 Personal wealth acceleration using **only free tools**. No paid APIs, no subscriptions required.
 
-## Tracker (shipped)
+## Playbook
+
+Read **[PLAYBOOK.md](PLAYBOOK.md)** — track → free stack → first three monetization moves → weekly loop.
+
+## Tracker
 
 Local CSV ledger + CLI — works offline, imports into LibreOffice Calc or Google Sheets.
 
@@ -17,17 +21,28 @@ python tracker.py summary
 ```
 
 Ledger path: `data/ledger.csv`  
+Sample rows: `data/sample_ledger.csv`  
 Columns: `date, type, amount, category, note`
 
 ### Free-tool path
-1. Run the CLI to log transactions.
-2. Open `data/ledger.csv` in **LibreOffice Calc** or upload to **Google Sheets**.
+1. Run the CLI to log transactions (or copy sample ledger).
+2. Open CSV in **LibreOffice Calc** or **Google Sheets**.
 3. Pivot by `category` / `type` for budgets — no paid BI tools.
+
+## Export (print / PDF)
+
+```bash
+python export.py --sample   # Markdown report from sample data
+python export.py            # from data/ledger.csv
+```
+
+Writes `export_report.md`. Open it and use browser **Print → Save as PDF** (free). Stdlib only.
 
 ## Quick start
 1. Clone this repo.
 2. `python tracker.py add 50 income gift`
 3. `python tracker.py summary`
+4. `python export.py --sample`
 
 ## Monetization (zero fixed cost)
 - Freelance: customize the playbook/tracker for clients.
@@ -36,4 +51,5 @@ Columns: `date, type, amount, category, note`
 
 ## Status
 - MVP tracker shipped (issue #4).
-- Iterate on playbook content next; keep everything zero-cost.
+- Playbook + sample ledger + export shipped (issue #5).
+- Keep everything zero-cost.
