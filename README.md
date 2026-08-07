@@ -34,9 +34,27 @@ Columns: `date, type, amount, category, note`
 ```bash
 python export.py --sample   # Markdown report from sample data
 python export.py            # from data/ledger.csv
+python export.py --client path/to/client_ledger.csv   # ready-to-send client report
 ```
 
-Writes `export_report.md`. Open it and use browser **Print → Save as PDF** (free). Stdlib only.
+Writes `export_report.md` (or `client_report.md` with `--client`). Open it and use browser **Print → Save as PDF** (free). Stdlib only.
+
+## Client / Monetization (zero fixed cost)
+
+Reusable pack so you can customize and deliver the free toolkit as a paid service:
+
+| File | Purpose |
+|------|---------|
+| [templates/client_ledger_template.csv](templates/client_ledger_template.csv) | Clean starter ledger for a new client |
+| [templates/client_playbook.md](templates/client_playbook.md) | One-page adaptation guide |
+| [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging, pricing, delivery (no paid tools) |
+
+### 3-step delivery checklist
+1. Copy the three template files + tracker.py + export.py into a client folder (or fork).
+2. Walk the client through `tracker.py add` and `export.py --client`.
+3. Hand over the first Markdown/PDF report and the weekly loop from the client playbook.
+
+See pricing notes for example offer tiers. Everything stays zero fixed cost.
 
 ## Quick start
 1. Clone this repo.
@@ -52,4 +70,5 @@ Writes `export_report.md`. Open it and use browser **Print → Save as PDF** (fr
 ## Status
 - MVP tracker shipped (issue #4).
 - Playbook + sample ledger + export shipped (issue #5).
+- Client-template pack shipped (issue #6).
 - Keep everything zero-cost.
