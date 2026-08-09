@@ -1,0 +1,11 @@
+date,type,amount,category,note
+2026-08-01,income,750.00,project,landing page milestone 1
+2026-08-01,expense,0.00,software,LibreOffice free
+2026-08-02,income,120.00,hourly,2h support call client B
+2026-08-03,expense,25.00,tools,domain renewal
+2026-08-04,income,99.00,productized,solo cashflow setup session
+2026-08-05,expense,200.00,tax_setaside,estimate 25% of week gross
+2026-08-05,income,400.00,retainer,client C half-month
+2026-08-06,expense,15.00,education,free course materials print
+2026-08-07,income,150.00,referral,intro fee from past client
+2026-08-07,expense,10.00,overhead,coworking day pass trial
