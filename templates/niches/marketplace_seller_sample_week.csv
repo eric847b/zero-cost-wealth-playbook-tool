@@ -1,0 +1,11 @@
+date,type,amount,category,note
+2026-08-03,income,48.00,sales,Gumroad template pack
+2026-08-03,expense,3.12,fees,Gumroad fee ~6.5%
+2026-08-04,income,12.00,sales,Etsy print listing
+2026-08-04,expense,1.56,fees,Etsy + payment fee
+2026-08-05,expense,9.00,ads,boosted listing test
+2026-08-06,income,29.00,sales,itch.io asset pack
+2026-08-06,expense,2.90,fees,platform cut
+2026-08-07,income,15.00,upsell,thank-you page add-on
+2026-08-08,expense,5.00,tools,domain renewal share
+2026-08-09,expense,12.00,tax_setaside,weekly estimate set-aside
