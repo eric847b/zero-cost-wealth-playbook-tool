@@ -55,6 +55,8 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 | [templates/niches/creator_sample_week.csv](templates/niches/creator_sample_week.csv) | Creator first-week demo rows |
 | [templates/niches/consultant_cashflow_playbook.md](templates/niches/consultant_cashflow_playbook.md) | Consultant niche weekly loop + categories |
 | [templates/niches/consultant_sample_week.csv](templates/niches/consultant_sample_week.csv) | Consultant first-week demo rows |
+| [templates/niches/agency_cashflow_playbook.md](templates/niches/agency_cashflow_playbook.md) | Agency niche weekly loop + categories |
+| [templates/niches/agency_sample_week.csv](templates/niches/agency_sample_week.csv) | Agency first-week demo rows |
 | [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
 
 ### One-command client pack (zip)
@@ -70,7 +72,7 @@ Produces `dist/zero-cost-client-pack.zip` — includes all niches under `templat
 2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
 3. Hand over the first Markdown/PDF report and the matching niche playbook.
 
-See [pricing notes](templates/pricing_notes.md) and [sales_one_pager.md](templates/sales_one_pager.md). Niches: Creator · Consultant.
+See [pricing notes](templates/pricing_notes.md) and [sales_one_pager.md](templates/sales_one_pager.md). Niches: Creator · Consultant · Agency.
 
 ## Quick start
 1. Clone this repo.
@@ -81,7 +83,7 @@ See [pricing notes](templates/pricing_notes.md) and [sales_one_pager.md](templat
 
 ## Monetization (zero fixed cost)
 - Generic pack + sales one-pager.
-- Niche upsells: Creator Cashflow · Consultant Cashflow.
+- Niche upsells: Creator Cashflow · Consultant Cashflow · Agency Cashflow.
 - Further niches: generate via LLM from existing niche templates (no human coding required).
 
 ## Autonomy model
@@ -96,5 +98,5 @@ See [pricing notes](templates/pricing_notes.md) and [sales_one_pager.md](templat
 - No paid bank sync / BI.
 
 ## Status
-- Client pack zip (#11), sales one-pager (#13), Creator niche (#15), Consultant niche (#17) shipped.
+- Client pack zip (#11), sales one-pager (#13), Creator niche (#15), Consultant niche (#17), Agency niche (#19) shipped.
 - Keep everything zero-cost.

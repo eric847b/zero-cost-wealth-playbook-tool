@@ -1,0 +1,11 @@
+date,type,amount,category,note
+2026-08-01,income,2500.00,retainer,client A monthly retainer
+2026-08-01,expense,0.00,software,LibreOffice free
+2026-08-02,income,1200.00,project,landing page deposit 50%
+2026-08-03,expense,450.00,subcontract,freelance designer week 1
+2026-08-04,income,800.00,upsell,client B extra page package
+2026-08-05,expense,300.00,tax_setaside,estimate 25% of net
+2026-08-05,income,199.00,productized,agency cashflow setup
+2026-08-06,expense,60.00,tools,domain + staging for demo
+2026-08-07,income,1200.00,project,landing page balance
+2026-08-07,income,150.00,referral,intro fee from past client
