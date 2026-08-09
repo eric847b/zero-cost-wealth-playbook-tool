@@ -53,6 +53,8 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 | [templates/sales_one_pager.md](templates/sales_one_pager.md) | Paste-ready listing + email copy for the client pack |
 | [templates/niches/creator_cashflow_playbook.md](templates/niches/creator_cashflow_playbook.md) | Creator niche weekly loop + categories |
 | [templates/niches/creator_sample_week.csv](templates/niches/creator_sample_week.csv) | Creator first-week demo rows |
+| [templates/niches/consultant_cashflow_playbook.md](templates/niches/consultant_cashflow_playbook.md) | Consultant niche weekly loop + categories |
+| [templates/niches/consultant_sample_week.csv](templates/niches/consultant_sample_week.csv) | Consultant first-week demo rows |
 | [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
 
 ### One-command client pack (zip)
@@ -61,41 +63,38 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 python scripts/pack_client.py
 ```
 
-Produces `dist/zero-cost-client-pack.zip` — a client unzips it and follows `README_CLIENT.md`. Stdlib only; no new deps. Niche files live under `templates/niches/` inside the same zip (templates/ is included).
+Produces `dist/zero-cost-client-pack.zip` — includes all niches under `templates/niches/`. Stdlib only; no new deps.
 
 ### 3-step delivery checklist
-1. Run the pack script (or copy the template files + tracker.py + export.py into a client folder).
+1. Run the pack script.
 2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
-3. Hand over the first Markdown/PDF report and the weekly loop from the client playbook.
+3. Hand over the first Markdown/PDF report and the matching niche playbook.
 
-See [pricing notes](templates/pricing_notes.md) and the [sales one-pager](templates/sales_one_pager.md) for offer tiers and paste-ready listing copy. For creators, add the [Creator Cashflow playbook](templates/niches/creator_cashflow_playbook.md). Everything stays zero fixed cost.
+See [pricing notes](templates/pricing_notes.md) and [sales_one_pager.md](templates/sales_one_pager.md). Niches: Creator · Consultant.
 
 ## Quick start
 1. Clone this repo.
 2. `python tracker.py add 50 income gift`
 3. `python tracker.py summary`
 4. `python export.py --sample`
-5. `python scripts/pack_client.py`  # optional: build client zip
+5. `python scripts/pack_client.py`
 
 ## Monetization (zero fixed cost)
-- Freelance: customize the playbook/tracker for clients.
-- Templates: share or sell consulting around the free toolkit.
-- Listing copy: use `templates/sales_one_pager.md` on free Gumroad / email.
-- Niche upsell: Creator Cashflow pack (higher price band than generic).
-- Open-source visibility → inbound opportunities.
+- Generic pack + sales one-pager.
+- Niche upsells: Creator Cashflow · Consultant Cashflow.
+- Further niches: generate via LLM from existing niche templates (no human coding required).
 
-## Resource balance (this stack vs other AI/software)
-- **This repo:** offline CLI + Markdown. No API keys, no GPU, no monthly SaaS.
-- **Grok / ChatGPT / Claude:** use for copy, niche variants, and client emails — not for ledger storage.
-- **Paid analytics / bank sync:** out of scope; keep CSV manual.
-- **Fleet agent (GitHub Actions):** ranks ROI work; does not replace your weekly money loop.
+## Autonomy model
+- **AI / software owns:** issue creation, niche templates, pack script, PR merge on currency path, fleet workflows.
+- **Owner is not required** for day-to-day currency artifacts.
+- Ledger entries remain real-world (only the human who receives money can log truth) — optional and offline.
+
+## Resource balance
+- This repo: offline CLI + Markdown.
+- LLMs: more niches and listing copy.
+- Fleet agent: ROI ranking + draft remediation.
+- No paid bank sync / BI.
 
 ## Status
-- MVP tracker shipped (issue #4).
-- Playbook + sample ledger + export shipped (issue #5).
-- Client-template pack shipped (issue #6).
-- Client onboarding checklist + first-week sample shipped (issue #9).
-- One-command client pack zip shipped (issue #11).
-- Sales one-pager + listing copy shipped (issue #13).
-- Creator Cashflow niche variant shipped (issue #15).
+- Client pack zip (#11), sales one-pager (#13), Creator niche (#15), Consultant niche (#17) shipped.
 - Keep everything zero-cost.
