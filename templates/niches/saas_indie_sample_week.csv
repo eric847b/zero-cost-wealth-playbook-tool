@@ -1,0 +1,10 @@
+date,type,amount,category,note
+2026-08-03,income,49.00,mrr,plan pro monthly - acme
+2026-08-03,income,29.00,mrr,plan starter monthly - beta co
+2026-08-04,expense,12.00,infra,vercel hobby + domain
+2026-08-04,income,199.00,onetime,lifetime deal - launch week
+2026-08-05,income,49.00,mrr,plan pro monthly - new signup
+2026-08-06,expense,8.50,tools,email + analytics free tier top-up
+2026-08-07,income,15.00,affiliate,partner referral credit
+2026-08-08,expense,50.00,tax_setaside,weekly estimate setaside
+2026-08-09,income,79.00,upsell,starter to pro upgrade
