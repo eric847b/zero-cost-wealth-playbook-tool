@@ -52,8 +52,16 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 | [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging, pricing, delivery (no paid tools) |
 | [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
 
+### One-command client pack (zip)
+
+```bash
+python scripts/pack_client.py
+```
+
+Produces `dist/zero-cost-client-pack.zip` — a client unzips it and follows `README_CLIENT.md`. Stdlib only; no new deps.
+
 ### 3-step delivery checklist
-1. Copy the template files + tracker.py + export.py into a client folder (or fork).
+1. Run the pack script (or copy the template files + tracker.py + export.py into a client folder).
 2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
 3. Hand over the first Markdown/PDF report and the weekly loop from the client playbook.
 
@@ -64,6 +72,7 @@ See pricing notes for example offer tiers. Everything stays zero fixed cost.
 2. `python tracker.py add 50 income gift`
 3. `python tracker.py summary`
 4. `python export.py --sample`
+5. `python scripts/pack_client.py`  # optional: build client zip
 
 ## Monetization (zero fixed cost)
 - Freelance: customize the playbook/tracker for clients.
@@ -75,4 +84,5 @@ See pricing notes for example offer tiers. Everything stays zero fixed cost.
 - Playbook + sample ledger + export shipped (issue #5).
 - Client-template pack shipped (issue #6).
 - Client onboarding checklist + first-week sample shipped (issue #9).
+- One-command client pack zip shipped (issue #11).
 - Keep everything zero-cost.
