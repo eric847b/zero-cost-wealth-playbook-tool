@@ -1,0 +1,9 @@
+date,type,amount,category,note
+2026-08-03,income,250.00,session,1:1 strategy call
+2026-08-04,income,97.00,course,self-paced module sale
+2026-08-04,expense,5.82,platform_fees,Gumroad fee ~6%
+2026-08-05,income,180.00,group,cohort seat 1 of 6
+2026-08-06,expense,15.00,tools,Zoom Pro share
+2026-08-07,income,49.00,membership,monthly community
+2026-08-08,expense,20.00,ads,waitlist boost test
+2026-08-09,expense,40.00,tax_setaside,weekly estimate set-aside

@@ -11,98 +11,50 @@ Read **[PLAYBOOK.md](PLAYBOOK.md)** — track → free stack → first three mon
 Local CSV ledger + CLI — works offline, imports into LibreOffice Calc or Google Sheets.
 
 ```bash
-# Add income / expense
 python tracker.py add 100 income freelance "template sale"
 python tracker.py add 12.50 expense software "domain renewal"
-
-# Inspect
 python tracker.py list
 python tracker.py summary
 ```
 
 Ledger path: `data/ledger.csv`  
-Sample rows: `data/sample_ledger.csv`  
-First-week sample: `data/sample_first_week_ledger.csv`  
 Columns: `date, type, amount, category, note`
-
-### Free-tool path
-1. Run the CLI to log transactions (or copy a sample ledger).
-2. Open CSV in **LibreOffice Calc** or **Google Sheets**.
-3. Pivot by `category` / `type` for budgets — no paid BI tools.
 
 ## Export (print / PDF)
 
 ```bash
-python export.py --sample   # Markdown report from sample data
-python export.py            # from data/ledger.csv
-python export.py --client path/to/client_ledger.csv   # ready-to-send client report
+python export.py --sample
+python export.py
+python export.py --client path/to/client_ledger.csv
 ```
-
-Writes `export_report.md` (or `client_report.md` with `--client`). Open it and use browser **Print → Save as PDF** (free). Stdlib only.
 
 ## Client / Monetization (zero fixed cost)
 
-Reusable pack so you can customize and deliver the free toolkit as a paid service:
-
 | File | Purpose |
 |------|---------|
-| [templates/client_ledger_template.csv](templates/client_ledger_template.csv) | Clean starter ledger for a new client |
+| [templates/client_ledger_template.csv](templates/client_ledger_template.csv) | Client starter ledger |
 | [templates/client_playbook.md](templates/client_playbook.md) | One-page adaptation guide |
-| [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md) | Day-0 to Day-7 checklist to hand the client |
-| [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging, pricing, delivery (no paid tools) |
-| [templates/sales_one_pager.md](templates/sales_one_pager.md) | Paste-ready listing + email copy for the client pack |
-| [templates/niches/creator_cashflow_playbook.md](templates/niches/creator_cashflow_playbook.md) | Creator niche weekly loop + categories |
-| [templates/niches/creator_sample_week.csv](templates/niches/creator_sample_week.csv) | Creator first-week demo rows |
-| [templates/niches/consultant_cashflow_playbook.md](templates/niches/consultant_cashflow_playbook.md) | Consultant niche weekly loop + categories |
-| [templates/niches/consultant_sample_week.csv](templates/niches/consultant_sample_week.csv) | Consultant first-week demo rows |
-| [templates/niches/agency_cashflow_playbook.md](templates/niches/agency_cashflow_playbook.md) | Agency niche weekly loop + categories |
-| [templates/niches/agency_sample_week.csv](templates/niches/agency_sample_week.csv) | Agency first-week demo rows |
-| [templates/niches/freelancer_cashflow_playbook.md](templates/niches/freelancer_cashflow_playbook.md) | Freelancer / Solo Operator niche |
-| [templates/niches/freelancer_sample_week.csv](templates/niches/freelancer_sample_week.csv) | Freelancer first-week demo rows |
-| [templates/niches/saas_indie_cashflow_playbook.md](templates/niches/saas_indie_cashflow_playbook.md) | SaaS / Indie Hacker niche |
-| [templates/niches/saas_indie_sample_week.csv](templates/niches/saas_indie_sample_week.csv) | SaaS / Indie first-week demo rows |
-| [templates/niches/marketplace_seller_cashflow_playbook.md](templates/niches/marketplace_seller_cashflow_playbook.md) | Marketplace / digital seller niche |
-| [templates/niches/marketplace_seller_sample_week.csv](templates/niches/marketplace_seller_sample_week.csv) | Marketplace seller first-week demo rows |
-| [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
-
-### One-command client pack (zip)
+| [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md) | Day-0 to Day-7 checklist |
+| [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging / pricing |
+| [templates/sales_one_pager.md](templates/sales_one_pager.md) | Listing + email copy |
+| [templates/niches/creator_cashflow_playbook.md](templates/niches/creator_cashflow_playbook.md) | Creator |
+| [templates/niches/consultant_cashflow_playbook.md](templates/niches/consultant_cashflow_playbook.md) | Consultant |
+| [templates/niches/agency_cashflow_playbook.md](templates/niches/agency_cashflow_playbook.md) | Agency |
+| [templates/niches/freelancer_cashflow_playbook.md](templates/niches/freelancer_cashflow_playbook.md) | Freelancer / Solo |
+| [templates/niches/saas_indie_cashflow_playbook.md](templates/niches/saas_indie_cashflow_playbook.md) | SaaS / Indie Hacker |
+| [templates/niches/marketplace_seller_cashflow_playbook.md](templates/niches/marketplace_seller_cashflow_playbook.md) | Marketplace / digital seller |
+| [templates/niches/coach_educator_cashflow_playbook.md](templates/niches/coach_educator_cashflow_playbook.md) | Coach / Educator |
+| [templates/niches/coach_educator_sample_week.csv](templates/niches/coach_educator_sample_week.csv) | Coach sample week |
 
 ```bash
-python scripts/pack_client.py
+python scripts/pack_client.py   # → dist/zero-cost-client-pack.zip (all niches)
 ```
 
-Produces `dist/zero-cost-client-pack.zip` — includes all niches under `templates/niches/`. Stdlib only; no new deps.
-
-### 3-step delivery checklist
-1. Run the pack script.
-2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
-3. Hand over the first Markdown/PDF report and the matching niche playbook.
-
-See [pricing notes](templates/pricing_notes.md) and [sales_one_pager.md](templates/sales_one_pager.md). Niches: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Marketplace Seller.
-
-## Quick start
-1. Clone this repo.
-2. `python tracker.py add 50 income gift`
-3. `python tracker.py summary`
-4. `python export.py --sample`
-5. `python scripts/pack_client.py`
-
-## Monetization (zero fixed cost)
-- Generic pack + sales one-pager.
-- Niche upsells: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Marketplace Seller.
-- Further niches: generate via LLM from existing niche templates (no human coding required).
+Niches: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Marketplace Seller · Coach/Educator.
 
 ## Autonomy model
-- **AI / software owns:** issue creation, niche templates, pack script, PR merge on currency path, fleet workflows.
+- **AI / software owns:** issues, niche templates, pack script, fleet workflows.
 - **Owner is not required** for day-to-day currency artifacts.
-- Ledger entries remain real-world (only the human who receives money can log truth) — optional and offline.
-
-## Resource balance
-- This repo: offline CLI + Markdown.
-- LLMs: more niches and listing copy.
-- Fleet agent: ROI ranking + draft remediation.
-- No paid bank sync / BI.
 
 ## Status
-- Client pack zip, sales one-pager, Creator, Consultant, Agency, Freelancer/Solo, SaaS/Indie, Marketplace Seller niches shipped.
-- Keep everything zero-cost.
+- All listed niches shipped. Keep everything zero-cost.
