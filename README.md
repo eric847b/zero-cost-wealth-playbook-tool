@@ -51,6 +51,8 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 | [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md) | Day-0 to Day-7 checklist to hand the client |
 | [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging, pricing, delivery (no paid tools) |
 | [templates/sales_one_pager.md](templates/sales_one_pager.md) | Paste-ready listing + email copy for the client pack |
+| [templates/niches/creator_cashflow_playbook.md](templates/niches/creator_cashflow_playbook.md) | Creator niche weekly loop + categories |
+| [templates/niches/creator_sample_week.csv](templates/niches/creator_sample_week.csv) | Creator first-week demo rows |
 | [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
 
 ### One-command client pack (zip)
@@ -59,14 +61,14 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 python scripts/pack_client.py
 ```
 
-Produces `dist/zero-cost-client-pack.zip` — a client unzips it and follows `README_CLIENT.md`. Stdlib only; no new deps.
+Produces `dist/zero-cost-client-pack.zip` — a client unzips it and follows `README_CLIENT.md`. Stdlib only; no new deps. Niche files live under `templates/niches/` inside the same zip (templates/ is included).
 
 ### 3-step delivery checklist
 1. Run the pack script (or copy the template files + tracker.py + export.py into a client folder).
 2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
 3. Hand over the first Markdown/PDF report and the weekly loop from the client playbook.
 
-See [pricing notes](templates/pricing_notes.md) and the [sales one-pager](templates/sales_one_pager.md) for offer tiers and paste-ready listing copy. Everything stays zero fixed cost.
+See [pricing notes](templates/pricing_notes.md) and the [sales one-pager](templates/sales_one_pager.md) for offer tiers and paste-ready listing copy. For creators, add the [Creator Cashflow playbook](templates/niches/creator_cashflow_playbook.md). Everything stays zero fixed cost.
 
 ## Quick start
 1. Clone this repo.
@@ -79,7 +81,14 @@ See [pricing notes](templates/pricing_notes.md) and the [sales one-pager](templa
 - Freelance: customize the playbook/tracker for clients.
 - Templates: share or sell consulting around the free toolkit.
 - Listing copy: use `templates/sales_one_pager.md` on free Gumroad / email.
+- Niche upsell: Creator Cashflow pack (higher price band than generic).
 - Open-source visibility → inbound opportunities.
+
+## Resource balance (this stack vs other AI/software)
+- **This repo:** offline CLI + Markdown. No API keys, no GPU, no monthly SaaS.
+- **Grok / ChatGPT / Claude:** use for copy, niche variants, and client emails — not for ledger storage.
+- **Paid analytics / bank sync:** out of scope; keep CSV manual.
+- **Fleet agent (GitHub Actions):** ranks ROI work; does not replace your weekly money loop.
 
 ## Status
 - MVP tracker shipped (issue #4).
@@ -88,4 +97,5 @@ See [pricing notes](templates/pricing_notes.md) and the [sales one-pager](templa
 - Client onboarding checklist + first-week sample shipped (issue #9).
 - One-command client pack zip shipped (issue #11).
 - Sales one-pager + listing copy shipped (issue #13).
+- Creator Cashflow niche variant shipped (issue #15).
 - Keep everything zero-cost.
