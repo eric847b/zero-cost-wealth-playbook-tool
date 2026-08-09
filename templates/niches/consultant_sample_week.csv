@@ -1,0 +1,11 @@
+date,type,amount,category,note
+2026-08-01,income,750.00,project,website audit deposit 50%
+2026-08-01,expense,0.00,software,LibreOffice free
+2026-08-02,income,180.00,hourly,1.5h rate review call
+2026-08-03,expense,22.00,tools,domain for client demo
+2026-08-04,income,300.00,retainer,monthly advisory week 1
+2026-08-05,expense,75.00,tax_setaside,estimate 25%
+2026-08-05,income,199.00,productized,cashflow setup package
+2026-08-06,expense,40.00,education,one course module used
+2026-08-07,income,750.00,project,website audit balance
+2026-08-07,income,100.00,referral,intro fee from past client
