@@ -50,6 +50,7 @@ Reusable pack so you can customize and deliver the free toolkit as a paid servic
 | [templates/client_playbook.md](templates/client_playbook.md) | One-page adaptation guide |
 | [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md) | Day-0 to Day-7 checklist to hand the client |
 | [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging, pricing, delivery (no paid tools) |
+| [templates/sales_one_pager.md](templates/sales_one_pager.md) | Paste-ready listing + email copy for the client pack |
 | [data/sample_first_week_ledger.csv](data/sample_first_week_ledger.csv) | Realistic first-week rows for demos |
 
 ### One-command client pack (zip)
@@ -65,7 +66,7 @@ Produces `dist/zero-cost-client-pack.zip` — a client unzips it and follows `RE
 2. Walk the client through the [onboarding checklist](templates/client_onboarding_checklist.md) and `export.py --client`.
 3. Hand over the first Markdown/PDF report and the weekly loop from the client playbook.
 
-See pricing notes for example offer tiers. Everything stays zero fixed cost.
+See [pricing notes](templates/pricing_notes.md) and the [sales one-pager](templates/sales_one_pager.md) for offer tiers and paste-ready listing copy. Everything stays zero fixed cost.
 
 ## Quick start
 1. Clone this repo.
@@ -77,6 +78,7 @@ See pricing notes for example offer tiers. Everything stays zero fixed cost.
 ## Monetization (zero fixed cost)
 - Freelance: customize the playbook/tracker for clients.
 - Templates: share or sell consulting around the free toolkit.
+- Listing copy: use `templates/sales_one_pager.md` on free Gumroad / email.
 - Open-source visibility → inbound opportunities.
 
 ## Status
@@ -85,4 +87,5 @@ See pricing notes for example offer tiers. Everything stays zero fixed cost.
 - Client-template pack shipped (issue #6).
 - Client onboarding checklist + first-week sample shipped (issue #9).
 - One-command client pack zip shipped (issue #11).
+- Sales one-pager + listing copy shipped (issue #13).
 - Keep everything zero-cost.
