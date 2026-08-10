@@ -45,13 +45,14 @@ python export.py --client path/to/client_ledger.csv
 | [templates/niches/marketplace_seller_cashflow_playbook.md](templates/niches/marketplace_seller_cashflow_playbook.md) | Marketplace / digital seller |
 | [templates/niches/coach_educator_cashflow_playbook.md](templates/niches/coach_educator_cashflow_playbook.md) | Coach / Educator |
 | [templates/niches/oss_maintainer_cashflow_playbook.md](templates/niches/oss_maintainer_cashflow_playbook.md) | OSS / Maintainer |
-| [templates/niches/oss_maintainer_sample_week.csv](templates/niches/oss_maintainer_sample_week.csv) | OSS sample week |
+| [templates/niches/newsletter_community_cashflow_playbook.md](templates/niches/newsletter_community_cashflow_playbook.md) | Newsletter / Community |
+| [templates/niches/newsletter_community_sample_week.csv](templates/niches/newsletter_community_sample_week.csv) | Newsletter sample week |
 
 ```bash
 python scripts/pack_client.py   # → dist/zero-cost-client-pack.zip (all niches)
 ```
 
-Niches: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Marketplace Seller · Coach/Educator · **OSS/Maintainer**.
+Niches: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Marketplace Seller · Coach/Educator · OSS/Maintainer · **Newsletter/Community**.
 
 ## Autonomy model
 - **AI / software owns:** issues, niche templates, pack script, fleet workflows.
@@ -59,4 +60,4 @@ Niches: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Mark
 - Cross-repo improvements may land from singularity-operator GitHubSeamless (draft-safe).
 
 ## Status
-- All listed niches shipped (including OSS/Maintainer via cross-repo orchestration). Keep everything zero-cost.
+- All listed niches shipped. Keep everything zero-cost.
