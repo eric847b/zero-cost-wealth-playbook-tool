@@ -1,0 +1,9 @@
+date,type,amount,category,note
+2026-08-03,income,200.00,sponsorship,GitHub Sponsors monthly
+2026-08-04,income,150.00,bounty,upstream bug bounty payout
+2026-08-05,income,75.00,docs_product,PDF troubleshooting guide sale
+2026-08-05,expense,4.50,platform_fees,Gumroad fee ~6%
+2026-08-06,income,300.00,support_retainer,enterprise office-hours week
+2026-08-07,expense,0.00,tools,free-tier only
+2026-08-08,expense,25.00,infra,optional static host credit
+2026-08-09,expense,50.00,tax_setaside,weekly estimate set-aside
