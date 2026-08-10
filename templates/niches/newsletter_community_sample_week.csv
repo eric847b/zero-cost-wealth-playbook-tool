@@ -1,0 +1,9 @@
+date,type,amount,category,note
+2026-08-03,income,400.00,sponsorship,issue sponsor slot
+2026-08-04,income,9.00,paid_tier,monthly paid subscriber
+2026-08-04,expense,0.54,platform_fees,platform cut ~6%
+2026-08-05,income,27.00,paid_tier,three renewals
+2026-08-06,income,49.00,digital_product,archive PDF bundle
+2026-08-07,expense,12.00,tools,email form free-tier boost
+2026-08-08,income,35.00,affiliate,disclosed tool referral
+2026-08-09,expense,50.00,tax_setaside,weekly estimate set-aside
