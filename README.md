@@ -2,88 +2,48 @@
 
 Personal wealth acceleration using **only free tools**. No paid APIs, no subscriptions required.
 
+## Public listing
+
+See **[PUBLIC_LISTING.md](PUBLIC_LISTING.md)** — blurb, price anchors, email CTA, pack build steps.  
+Repo is public; paste the blurb to Gumroad/Lemon free tier when ready.
+
+```bash
+python scripts/pack_client.py   # → dist/zero-cost-client-pack.zip (~42KB verified)
+```
+
 ## Playbook
 
-Read **[PLAYBOOK.md](PLAYBOOK.md)** — track → free stack → first three monetization moves → weekly loop.
+Read **[PLAYBOOK.md](PLAYBOOK.md)** — track → free stack → monetization moves → weekly loop.
 
 ## Tracker
 
-Local CSV ledger + CLI — works offline, imports into LibreOffice Calc or Google Sheets.
-
 ```bash
 python tracker.py add 100 income freelance "template sale"
-python tracker.py add 12.50 expense software "domain renewal"
-python tracker.py list
 python tracker.py summary
 ```
 
-Ledger path: `data/ledger.csv`  
-Columns: `date, type, amount, category, note`
-
-## Runway (currency velocity)
+## Runway / experiments / quotes
 
 ```bash
-python runway.py --sample   # demo from sample ledger
-python runway.py            # your data/ledger.csv → runway_report.md
-```
-
-## Income experiments (rank by expected $ / effort)
-
-```bash
-python scripts/income_experiment.py list
+python runway.py --sample
 python scripts/income_experiment.py rank
-python scripts/income_experiment.py add "setup-session" 149 3 "45-min client setup"
-python scripts/income_experiment.py status 2 active
-python scripts/income_experiment.py summary
-```
-
-Board: `data/income_experiments.csv`  
-**Top ranked offer in flight:** setup-session-offer (#2) — see SOW below.
-
-## Free quote / invoice
-
-```bash
 python scripts/quote.py --client "Acme" --item "Cashflow setup session (45–60 min)" --amount 149 --type quote
 ```
 
-## Setup session (sellable offer)
+## Setup session (sellable)
 
 | File | Purpose |
 |------|---------|
-| [templates/setup_session_sow.md](templates/setup_session_sow.md) | Statement of work — scope, price, deliverables |
-| [templates/setup_session_checklist.md](templates/setup_session_checklist.md) | Live delivery checklist for the operator |
+| [templates/setup_session_sow.md](templates/setup_session_sow.md) | SOW |
+| [templates/setup_session_checklist.md](templates/setup_session_checklist.md) | Live delivery checklist |
 
-## Export (print / PDF)
+## Client pack contents
 
-```bash
-python export.py --sample
-python export.py
-python export.py --client path/to/client_ledger.csv
-```
-
-## Client / Monetization (zero fixed cost)
-
-| File | Purpose |
-|------|---------|
-| [templates/client_ledger_template.csv](templates/client_ledger_template.csv) | Client starter ledger |
-| [templates/client_playbook.md](templates/client_playbook.md) | One-page adaptation guide |
-| [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md) | Day-0 to Day-7 checklist |
-| [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging / pricing |
-| [templates/sales_one_pager.md](templates/sales_one_pager.md) | Listing + email copy |
-| [templates/invoice_quote.md](templates/invoice_quote.md) | Manual quote/invoice fill-in |
-| [templates/setup_session_sow.md](templates/setup_session_sow.md) | Paid setup session SOW |
-| [templates/setup_session_checklist.md](templates/setup_session_checklist.md) | Setup session delivery checklist |
-| [templates/niches/](templates/niches/) | Niche cashflow playbooks + sample weeks |
-
-```bash
-python scripts/pack_client.py   # → dist/zero-cost-client-pack.zip (all niches)
-```
-
-## Autonomy model
-- **AI / software owns:** issues, niche templates, pack script, fleet workflows, runway/experiment CLIs, setup-session SOW.
-- **Owner is not required** for day-to-day currency artifacts; owner executes live client sessions when booked.
+`tracker.py` · `runway.py` · `export.py` · `scripts/quote.py` · `scripts/income_experiment.py` · templates (incl. SOW) · sample data · niches
 
 ## Status
-- #21 closed: runway + income experiments + free quote CLI.
-- Experiment #2 **active**: setup-session SOW + delivery checklist on main (`12daf7f`).
-- Keep everything zero-cost.
+- #21 closed (runway + experiments + quote CLI).
+- **Listed publicly:** `PUBLIC_LISTING.md` + updated pack (commit `b072c38`).
+- Experiment #1 **active** (GitHub listing surface live; optional marketplace paste still open).
+- Experiment #2 **active** — SOW ready; **not** marked `won` (no paid delivery; ledger stays clean).
+- Keep everything zero-cost. Never log simulated income.
