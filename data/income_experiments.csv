@@ -1,4 +1,4 @@
 id,date,name,expected_revenue,effort,status,note,score
 1,2026-08-11,template-pack-listing,79.00,2,planned,List cashflow pack on free Gumroad tier,39.50
-2,2026-08-11,setup-session-offer,149.00,3,planned,45-min ledger setup for one freelancer,49.67
+2,2026-08-11,setup-session-offer,149.00,3,active,45-min ledger setup — SOW+checklist shipped templates/setup_session_*,49.67
 3,2026-08-11,oss-inbound-help,99.00,2,active,Convert one GitHub issue into paid help,49.50
