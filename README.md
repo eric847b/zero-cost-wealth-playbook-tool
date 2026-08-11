@@ -46,18 +46,18 @@ python export.py --client path/to/client_ledger.csv
 | [templates/niches/coach_educator_cashflow_playbook.md](templates/niches/coach_educator_cashflow_playbook.md) | Coach / Educator |
 | [templates/niches/oss_maintainer_cashflow_playbook.md](templates/niches/oss_maintainer_cashflow_playbook.md) | OSS / Maintainer |
 | [templates/niches/newsletter_community_cashflow_playbook.md](templates/niches/newsletter_community_cashflow_playbook.md) | Newsletter / Community |
-| [templates/niches/newsletter_community_sample_week.csv](templates/niches/newsletter_community_sample_week.csv) | Newsletter sample week |
+| [templates/niches/local_services_cashflow_playbook.md](templates/niches/local_services_cashflow_playbook.md) | Local Services / Trades |
+| [templates/niches/local_services_sample_week.csv](templates/niches/local_services_sample_week.csv) | Local services sample week |
 
 ```bash
 python scripts/pack_client.py   # → dist/zero-cost-client-pack.zip (all niches)
 ```
 
-Niches: Creator · Consultant · Agency · Freelancer/Solo · SaaS/Indie · Marketplace Seller · Coach/Educator · OSS/Maintainer · **Newsletter/Community**.
+Niches: Creator · Consultant · Agency · Freelancer · SaaS/Indie · Marketplace · Coach · OSS · Newsletter · **Local Services**.
 
 ## Autonomy model
 - **AI / software owns:** issues, niche templates, pack script, fleet workflows.
 - **Owner is not required** for day-to-day currency artifacts.
-- Cross-repo improvements may land from singularity-operator GitHubSeamless (draft-safe).
 
 ## Status
 - All listed niches shipped. Keep everything zero-cost.
