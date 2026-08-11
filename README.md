@@ -27,8 +27,6 @@ python runway.py --sample   # demo from sample ledger
 python runway.py            # your data/ledger.csv → runway_report.md
 ```
 
-Reports weekly in/out/net, conservative runway weeks, top income categories, and next currency moves. Stdlib only.
-
 ## Income experiments (rank by expected $ / effort)
 
 ```bash
@@ -39,16 +37,21 @@ python scripts/income_experiment.py status 2 active
 python scripts/income_experiment.py summary
 ```
 
-Board: `data/income_experiments.csv`
+Board: `data/income_experiments.csv`  
+**Top ranked offer in flight:** setup-session-offer (#2) — see SOW below.
 
 ## Free quote / invoice
 
 ```bash
-python scripts/quote.py --client "Acme" --item "Cashflow setup" --amount 149 --type quote
-python scripts/quote.py --client "Acme" --item "Monthly review" --amount 79 --type invoice --due 14
+python scripts/quote.py --client "Acme" --item "Cashflow setup session (45–60 min)" --amount 149 --type quote
 ```
 
-Writes Markdown under `quotes/`. Template: [templates/invoice_quote.md](templates/invoice_quote.md).
+## Setup session (sellable offer)
+
+| File | Purpose |
+|------|---------|
+| [templates/setup_session_sow.md](templates/setup_session_sow.md) | Statement of work — scope, price, deliverables |
+| [templates/setup_session_checklist.md](templates/setup_session_checklist.md) | Live delivery checklist for the operator |
 
 ## Export (print / PDF)
 
@@ -68,18 +71,19 @@ python export.py --client path/to/client_ledger.csv
 | [templates/pricing_notes.md](templates/pricing_notes.md) | Packaging / pricing |
 | [templates/sales_one_pager.md](templates/sales_one_pager.md) | Listing + email copy |
 | [templates/invoice_quote.md](templates/invoice_quote.md) | Manual quote/invoice fill-in |
+| [templates/setup_session_sow.md](templates/setup_session_sow.md) | Paid setup session SOW |
+| [templates/setup_session_checklist.md](templates/setup_session_checklist.md) | Setup session delivery checklist |
 | [templates/niches/](templates/niches/) | Niche cashflow playbooks + sample weeks |
 
 ```bash
 python scripts/pack_client.py   # → dist/zero-cost-client-pack.zip (all niches)
 ```
 
-Niches: Creator · Consultant · Agency · Freelancer · SaaS/Indie · Marketplace · Coach · OSS · Newsletter · Local Services.
-
 ## Autonomy model
-- **AI / software owns:** issues, niche templates, pack script, fleet workflows, runway/experiment CLIs.
-- **Owner is not required** for day-to-day currency artifacts.
+- **AI / software owns:** issues, niche templates, pack script, fleet workflows, runway/experiment CLIs, setup-session SOW.
+- **Owner is not required** for day-to-day currency artifacts; owner executes live client sessions when booked.
 
 ## Status
-- Currency catalyst #21 closed: runway + income experiments + free quote CLI shipped and verified.
+- #21 closed: runway + income experiments + free quote CLI.
+- Experiment #2 **active**: setup-session SOW + delivery checklist on main (`12daf7f`).
 - Keep everything zero-cost.
