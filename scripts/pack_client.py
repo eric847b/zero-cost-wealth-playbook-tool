@@ -25,47 +25,66 @@ ZIP_NAME = "zero-cost-client-pack.zip"
 INCLUDE = [
     "tracker.py",
     "export.py",
+    "runway.py",
     "PLAYBOOK.md",
+    "PUBLIC_LISTING.md",
     "LICENSE",
     "templates",
+    "scripts/quote.py",
+    "scripts/income_experiment.py",
     "data/sample_first_week_ledger.csv",
     "data/sample_ledger.csv",
+    "data/income_experiments.csv",
 ]
 
 README_CLIENT = """# Zero-Cost Client Pack
 
 Personal wealth tracker + playbook using **only free tools**. Offline-ready.
 
-## 3-step delivery checklist
+## 3-step start
 
-1. Unzip this pack. Confirm Python 3 is available (`python --version`).
-2. Copy `templates/client_ledger_template.csv` → `data/ledger.csv` (create the `data/` folder if needed).
-3. Run the first commands and hand over the onboarding checklist.
+1. Unzip this pack. Confirm Python 3 (`python --version`).
+2. Copy `templates/client_ledger_template.csv` → `data/ledger.csv` (create `data/` if needed).
+3. Run:
 
 ```bash
-python tracker.py add 100 income freelance "first client payment"
+python tracker.py add 100 income freelance "first payment"
 python tracker.py add 12.50 expense software "domain"
 python tracker.py summary
+python runway.py
 python export.py --client data/ledger.csv
 ```
 
-Open the generated Markdown report → browser Print → Save as PDF (free).
+Open the Markdown report → browser **Print → Save as PDF** (free).
+
+## Paid setup (optional)
+
+If you booked a setup session, your operator follows:
+- `templates/setup_session_sow.md`
+- `templates/setup_session_checklist.md`
+
+Free quote/invoice generator:
+```bash
+python scripts/quote.py --client "Your Name" --item "Cashflow setup session" --amount 149 --type quote
+```
 
 ## What's inside
 
 | Item | Purpose |
 |------|---------|
 | `tracker.py` | Local CSV ledger CLI |
+| `runway.py` | Weekly velocity + runway |
 | `export.py` | Markdown/PDF-ready report |
+| `scripts/quote.py` | Free quotes & invoices |
+| `scripts/income_experiment.py` | Rank income experiments |
 | `PLAYBOOK.md` | Full zero-cost playbook |
-| `templates/` | Client ledger template, onboarding checklist, playbook, pricing notes |
-| `data/sample_first_week_ledger.csv` | Realistic first-week demo rows |
-| `data/sample_ledger.csv` | Extra sample rows |
+| `templates/` | Onboarding, SOW, niches, pricing |
+| `data/sample_*.csv` | Demo weeks |
 | `LICENSE` | MIT |
 
 ## Client onboarding
 
-Hand the client [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md).
+See [templates/client_onboarding_checklist.md](templates/client_onboarding_checklist.md).
 
 Everything stays zero fixed cost. No paid APIs or subscriptions required.
 """
@@ -88,10 +107,8 @@ def main() -> int:
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dest)
 
-    # Ensure data/ exists even if only samples are present
     (STAGING / "data").mkdir(parents=True, exist_ok=True)
-
-    # Client-facing README
+    (STAGING / "scripts").mkdir(parents=True, exist_ok=True)
     (STAGING / "README_CLIENT.md").write_text(README_CLIENT, encoding="utf-8")
 
     zip_path = DIST / ZIP_NAME
@@ -101,10 +118,8 @@ def main() -> int:
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         for path in STAGING.rglob("*"):
             if path.is_file():
-                arcname = path.relative_to(STAGING)
-                zf.write(path, arcname)
+                zf.write(path, path.relative_to(STAGING))
 
-    # Clean staging
     shutil.rmtree(STAGING)
 
     print(f"Created: {zip_path}")
