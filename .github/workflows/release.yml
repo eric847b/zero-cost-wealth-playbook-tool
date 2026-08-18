@@ -1,0 +1,129 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (e.g. v1.0.0). Leave empty to use github.ref_name."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Build single-file Windows executables
+        shell: bash
+        run: |
+          mkdir -p dist
+          # Stdlib-only scripts → clean one-file EXEs
+          pyinstaller --onefile --console --name wealth-tracker --clean tracker.py
+          pyinstaller --onefile --console --name wealth-runway --clean runway.py
+          pyinstaller --onefile --console --name wealth-export --clean export.py
+          # Optional helpers
+          if [ -f scripts/quote.py ]; then
+            pyinstaller --onefile --console --name wealth-quote --clean scripts/quote.py
+          fi
+          if [ -f scripts/income_experiment.py ]; then
+            pyinstaller --onefile --console --name wealth-experiment --clean scripts/income_experiment.py
+          fi
+          ls -la dist/
+
+      - name: Build client pack (zip)
+        shell: bash
+        run: python scripts/pack_client.py
+
+      - name: Collect artifacts
+        shell: bash
+        run: |
+          mkdir -p release-assets
+          cp dist/*.exe release-assets/ 2>/dev/null || true
+          cp dist/zero-cost-client-pack.zip release-assets/ 2>/dev/null || true
+          # Also include a portable source-ish pack for non-Windows users
+          ls -la release-assets/
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-binaries
+          path: release-assets/
+
+  release:
+    needs: build-windows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Windows binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-binaries
+          path: release-assets
+
+      - name: Determine tag
+        id: tag
+        run: |
+          if [ -n "${{ github.event.inputs.tag }}" ]; then
+            echo "tag=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: Zero-Cost Wealth Playbook Tool ${{ steps.tag.outputs.tag }}
+          body: |
+            ## Zero-Cost Wealth Playbook Tool ${{ steps.tag.outputs.tag }}
+
+            Personal wealth acceleration toolkit — **stdlib only**, zero paid APIs.
+
+            ### Windows single-file executables
+            Download the `.exe` files below. No Python install required.
+
+            | Binary | Purpose |
+            |--------|---------|
+            | `wealth-tracker.exe` | Local CSV ledger CLI (`add` / `list` / `summary`) |
+            | `wealth-runway.exe` | Weekly velocity + runway report |
+            | `wealth-export.exe` | Markdown/PDF-ready report |
+            | `wealth-quote.exe` | Free quote / invoice generator |
+            | `wealth-experiment.exe` | Rank income experiments |
+
+            Place the EXE next to a `data/` folder (or it will create one). Example:
+            ```
+            wealth-tracker.exe add 100 income freelance "template sale"
+            wealth-tracker.exe summary
+            wealth-runway.exe
+            ```
+
+            ### Client pack
+            `zero-cost-client-pack.zip` — full offline pack (scripts + templates + samples) for clients or Python users.
+
+            ### Source
+            Full source is always available via the source code / zipball links on this release page.
+
+            MIT License. Keep everything zero-cost.
+          files: |
+            release-assets/*
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
