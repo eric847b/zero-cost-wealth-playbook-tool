@@ -1,0 +1,67 @@
+name: Cleanup Stale Branches
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "If true, only list branches that would be deleted"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete merged feature branches
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const dry = String('${{ github.event.inputs.dry_run || "false" }}').toLowerCase() === 'true';
+            // Keep main + active dependabot branches; delete known merged leftovers
+            const deleteList = [
+              'release-packaging',
+              'fleet-ops-upgrade',
+              'feat/add-mit-license',
+              'feat/client-pack-zip',
+              'feat/client-template-pack',
+              'feat/consultant-cashflow-niche',
+              'feat/creator-cashflow-niche',
+              'feat/sales-one-pager',
+              'feat-client-onboarding-checklist',
+              'evolve/failure-solver-v3.5',
+              'evolve/fs-core-modules',
+              'evolve/fs-core-py',
+            ];
+            // Also sweep dependabot branches that may be left after merge
+            const { data: branches } = await github.rest.repos.listBranches({
+              owner, repo, per_page: 100
+            });
+            const names = new Set(branches.map(b => b.name));
+            const targets = [...deleteList];
+            for (const b of branches) {
+              if (b.name.startsWith('dependabot/') && b.name !== 'main') {
+                // only if no open PR for this head (best-effort: still delete if merged PR left branch)
+                targets.push(b.name);
+              }
+            }
+            const unique = [...new Set(targets)].filter(n => n !== 'main' && names.has(n));
+            console.log('Candidates:', unique.join(', ') || '(none)');
+            for (const branch of unique) {
+              if (dry) {
+                console.log(`[dry-run] would delete ${branch}`);
+                continue;
+              }
+              try {
+                await github.rest.git.deleteRef({
+                  owner, repo, ref: `heads/${branch}`
+                });
+                console.log(`Deleted ${branch}`);
+              } catch (e) {
+                console.log(`Skip ${branch}: ${e.message}`);
+              }
+            }
