@@ -21,8 +21,9 @@ jobs:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const dry = String('${{ github.event.inputs.dry_run || "false" }}').toLowerCase() === 'true';
-            // Keep main + active dependabot branches; delete known merged leftovers
+            const dryInput = '${{ github.event.inputs.dry_run }}';
+            const dry = String(dryInput || 'false').toLowerCase() === 'true';
+            // Keep main; delete known merged leftovers + leftover dependabot branches
             const deleteList = [
               'release-packaging',
               'fleet-ops-upgrade',
@@ -36,16 +37,15 @@ jobs:
               'evolve/failure-solver-v3.5',
               'evolve/fs-core-modules',
               'evolve/fs-core-py',
+              'chore/branch-cleanup',
             ];
-            // Also sweep dependabot branches that may be left after merge
             const { data: branches } = await github.rest.repos.listBranches({
               owner, repo, per_page: 100
             });
             const names = new Set(branches.map(b => b.name));
             const targets = [...deleteList];
             for (const b of branches) {
-              if (b.name.startsWith('dependabot/') && b.name !== 'main') {
-                // only if no open PR for this head (best-effort: still delete if merged PR left branch)
+              if (b.name.startsWith('dependabot/')) {
                 targets.push(b.name);
               }
             }
