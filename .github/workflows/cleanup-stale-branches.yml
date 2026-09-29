@@ -17,12 +17,13 @@ jobs:
     steps:
       - name: Delete merged feature branches
         uses: actions/github-script@v9
+        env:
+          DRY_RUN_INPUT: ${{ github.event.inputs.dry_run }}
         with:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const dryInput = '${{ github.event.inputs.dry_run }}';
-            const dry = String(dryInput || 'false').toLowerCase() === 'true';
+            const dry = String(process.env.DRY_RUN_INPUT || 'false').toLowerCase() === 'true';
             // Keep main; delete known merged leftovers + leftover dependabot branches
             const deleteList = [
               'release-packaging',
