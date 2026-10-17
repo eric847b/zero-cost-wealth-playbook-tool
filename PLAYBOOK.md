@@ -2,6 +2,8 @@
 
 Personal wealth acceleration using **only free tools**. No paid APIs. No subscriptions.
 
+**Version:** 1.0.1
+
 ## 1. Track everything
 
 Use the local ledger:
@@ -23,6 +25,7 @@ python tracker.py summary
 | Ledger | `tracker.py` + CSV |
 | Velocity / runway | `python runway.py` |
 | Experiment ranking | `python scripts/income_experiment.py rank` |
+| Next experiment ideas | `python scripts/income_experiment.py suggest` (free-AI optional + heuristic) |
 | Quote / invoice | `python scripts/quote.py` → Markdown / Print PDF |
 | Spreadsheet | LibreOffice Calc / Google Sheets |
 | Print / PDF | Browser print → Save as PDF, or `python export.py` then print Markdown |
@@ -40,9 +43,10 @@ For client delivery, use the [onboarding checklist](templates/client_onboarding_
 
 1. Log every inflow/outflow the same day (`tracker.py add`).
 2. Run `python tracker.py summary` and `python runway.py` once a week.
-3. Run `python scripts/income_experiment.py rank` and execute the top open experiment.
-4. Run `python export.py` for a printable snapshot; issue quotes with `scripts/quote.py`.
-5. Adjust one category or one income experiment — not ten.
+3. Run `python scripts/income_experiment.py rank` and `python scripts/income_experiment.py suggest`.
+4. Execute the top open experiment; mark status when done.
+5. Run `python export.py` for a printable snapshot; issue quotes with `scripts/quote.py`.
+6. Adjust one category or one income experiment — not ten.
 
 ## 5. Non-goals
 
@@ -52,4 +56,4 @@ For client delivery, use the [onboarding checklist](templates/client_onboarding_
 
 ---
 
-*Iterate the playbook; keep the stack free.*
+*Iterate the playbook; keep the stack free. Free-AI suggest is optional and never required.*

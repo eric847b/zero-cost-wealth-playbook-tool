@@ -2,6 +2,7 @@
 """
 Income experiment board — track monetization experiments with expected revenue.
 Zero-cost. Stdlib + local CSV. Rank by expected $ / effort.
+Optional free-AI suggest (Pollinations no-key / local / free tiers) with pure heuristic fallback.
 
 Usage:
   python scripts/income_experiment.py add <name> <expected_revenue> <effort_1_to_5> [note...]
@@ -9,15 +10,19 @@ Usage:
   python scripts/income_experiment.py rank
   python scripts/income_experiment.py status <id> <planned|active|won|lost|paused>
   python scripts/income_experiment.py summary
+  python scripts/income_experiment.py suggest   # free-AI or heuristic next experiments
 
 Board file: data/income_experiments.csv
 """
 from __future__ import annotations
 
 import csv
+import json
+import os
 import sys
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 BOARD = ROOT / "data" / "income_experiments.csv"
@@ -48,7 +53,6 @@ def _write(rows: list[dict]) -> None:
 
 
 def _score(expected: float, effort: int) -> float:
-    # Higher expected $ and lower effort → higher score. Effort 1–5.
     effort = max(1, min(5, effort))
     return round(expected / effort, 2)
 
@@ -172,6 +176,95 @@ def cmd_summary(_: list[str]) -> int:
     return 0
 
 
+def _heuristic_suggestions(rows: list[dict]) -> list[str]:
+    """Always-available zero-cost suggestions. No network."""
+    tips = [
+        "Package tracker + PLAYBOOK as a $49–149 setup session (use scripts/quote.py).",
+        "Ship one free public template this week → convert attention into paid customization.",
+        "List the client pack on a free Gumroad/Lemon tier using PUBLIC_LISTING.md blurb.",
+        "Offer a 45–60 min cashflow setup call; quote with scripts/quote.py --amount 149.",
+        "Turn the highest-income category from runway.py into a repeatable productized service.",
+    ]
+    open_names = {(r.get("name") or "").lower() for r in rows if (r.get("status") or "").lower() in ("planned", "active")}
+    filtered = [t for t in tips if not any(k in t.lower() for k in open_names if len(k) > 4)]
+    return filtered[:4] or tips[:3]
+
+
+def _try_free_ai_suggest(context: str) -> list[str] | None:
+    """Optional free-AI path (Pollinations no-key first). Returns None on any failure."""
+    try:
+        import requests  # optional; stdlib fallback always works
+    except ImportError:
+        return None
+    prompt = (
+        "You are a zero-cost wealth catalyst. Given this experiment board context, "
+        "return ONLY a JSON array of 3 short concrete next income experiments "
+        "(each string under 120 chars). Prefer free tools, productized offers, open-source inbound.\n\n"
+        f"CONTEXT:\n{context[:1200]}"
+    )
+    urls = [
+        ("https://text.pollinations.ai/openai", {"model": "openai", "messages": [{"role": "user", "content": prompt}], "max_tokens": 400}),
+    ]
+    # Optional keyed free tiers if present
+    if os.getenv("GROQ_API_KEY"):
+        urls.append((
+            "https://api.groq.com/openai/v1/chat/completions",
+            {
+                "model": os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": 400,
+            },
+        ))
+    for url, payload in urls:
+        try:
+            headers = {"Content-Type": "application/json"}
+            if "groq.com" in url:
+                headers["Authorization"] = f"Bearer {os.getenv('GROQ_API_KEY')}"
+            resp = requests.post(url, headers=headers, json=payload, timeout=20)
+            if resp.status_code >= 300:
+                continue
+            data = resp.json()
+            content = (
+                data.get("choices", [{}])[0].get("message", {}).get("content")
+                or data.get("text")
+                or ""
+            )
+            content = content.strip()
+            # Extract JSON array
+            start = content.find("[")
+            end = content.rfind("]")
+            if start >= 0 and end > start:
+                arr = json.loads(content[start : end + 1])
+                if isinstance(arr, list) and arr:
+                    return [str(x).strip()[:160] for x in arr[:4] if str(x).strip()]
+        except Exception:
+            continue
+    return None
+
+
+def cmd_suggest(_: list[str]) -> int:
+    rows = _read()
+    summary_bits = []
+    for r in rows[-12:]:
+        summary_bits.append(
+            f"#{r.get('id')} {r.get('status')} score={r.get('score')} "
+            f"exp={r.get('expected_revenue')} effort={r.get('effort')} — {r.get('name')}"
+        )
+    context = "\n".join(summary_bits) if summary_bits else "(empty board)"
+    ai = _try_free_ai_suggest(context)
+    if ai:
+        print("Free-AI suggested next experiments (zero cost path):")
+        for i, s in enumerate(ai, 1):
+            print(f"  {i}. {s}")
+        print("\nAdd any with: python scripts/income_experiment.py add \"<name>\" <expected> <effort>")
+        return 0
+    print("Heuristic next experiments (no network / free-AI unavailable):")
+    for i, s in enumerate(_heuristic_suggestions(rows), 1):
+        print(f"  {i}. {s}")
+    print("\nAdd any with: python scripts/income_experiment.py add \"<name>\" <expected> <effort>")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if not argv:
@@ -189,6 +282,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_status(rest)
     if cmd == "summary":
         return cmd_summary(rest)
+    if cmd == "suggest":
+        return cmd_suggest(rest)
     print(f"Unknown command: {cmd}")
     print(__doc__)
     return 2

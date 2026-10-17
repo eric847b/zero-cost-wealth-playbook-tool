@@ -2,7 +2,7 @@
 
 Personal wealth acceleration using **only free tools**. No paid APIs, no subscriptions required.
 
-**Version:** see [VERSION](VERSION) · **License:** MIT
+**Version:** 1.0.1 · **License:** MIT
 
 ## Windows single-file executables
 
@@ -14,7 +14,7 @@ Download the latest **Release** from the [Releases page](https://github.com/eric
 | `wealth-runway.exe` | Weekly velocity + runway report |
 | `wealth-export.exe` | Markdown / PDF-ready report |
 | `wealth-quote.exe` | Free quote & invoice generator |
-| `wealth-experiment.exe` | Rank income experiments |
+| `wealth-experiment.exe` | Rank + suggest income experiments |
 | `zero-cost-client-pack.zip` | Full offline client pack (Python source + templates) |
 
 No Python install required for the `.exe` files. Place them next to a `data/` folder (created automatically on first run).
@@ -30,8 +30,8 @@ wealth-runway.exe
 Push a tag `v*` (or run the **Release** workflow manually). GitHub Actions builds the Windows one-file EXEs with PyInstaller and attaches them to a GitHub Release automatically.
 
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.1
+git push origin v1.0.1
 ```
 
 ## Public listing
@@ -59,6 +59,7 @@ python tracker.py summary
 ```bash
 python runway.py --sample
 python scripts/income_experiment.py rank
+python scripts/income_experiment.py suggest   # free-AI optional + heuristic fallback
 python scripts/quote.py --client "Acme" --item "Cashflow setup session (45–60 min)" --amount 149 --type quote
 ```
 
@@ -77,4 +78,5 @@ python scripts/quote.py --client "Acme" --item "Cashflow setup session (45–60 
 - #21 closed (runway + experiments + quote CLI).
 - **Listed publicly:** `PUBLIC_LISTING.md` + updated pack.
 - Release packaging + Windows single-file EXE workflow added.
+- **v1.0.1:** `suggest` command — free-AI optional (Pollinations no-key / free tiers) with pure heuristic fallback. Never requires a key.
 - Keep everything zero-cost. Never log simulated income.
