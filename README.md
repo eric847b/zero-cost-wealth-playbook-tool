@@ -2,7 +2,14 @@
 
 Personal wealth acceleration using **only free tools**. No paid APIs, no subscriptions required.
 
-**Version:** 1.0.1 · **License:** MIT
+**Version:** 1.0.2 · **License:** MIT
+
+## Fleet signal (for Singularity Operator)
+
+Machine-readable status for `continuous_roi_rank`:
+**[CURRENCY_STATUS.md](CURRENCY_STATUS.md)** — version, capabilities, ranked open experiments, JSON block.
+
+Consumed by `eric847b/singularity-operator` via `GitHubSeamless.fetch_currency_signals()`.
 
 ## Windows single-file executables
 
@@ -30,8 +37,8 @@ wealth-runway.exe
 Push a tag `v*` (or run the **Release** workflow manually). GitHub Actions builds the Windows one-file EXEs with PyInstaller and attaches them to a GitHub Release automatically.
 
 ```bash
-git tag v1.0.1
-git push origin v1.0.1
+git tag v1.0.2
+git push origin v1.0.2
 ```
 
 ## Public listing
@@ -75,8 +82,6 @@ python scripts/quote.py --client "Acme" --item "Cashflow setup session (45–60 
 `tracker.py` · `runway.py` · `export.py` · `scripts/quote.py` · `scripts/income_experiment.py` · templates (incl. SOW) · sample data · niches
 
 ## Status
-- #21 closed (runway + experiments + quote CLI).
-- **Listed publicly:** `PUBLIC_LISTING.md` + updated pack.
-- Release packaging + Windows single-file EXE workflow added.
-- **v1.0.1:** `suggest` command — free-AI optional (Pollinations no-key / free tiers) with pure heuristic fallback. Never requires a key.
+- **v1.0.2:** CURRENCY_STATUS.md fleet signal with live ranked experiments for SO continuous_roi_rank.
+- **v1.0.1:** `suggest` command — free-AI optional with heuristic fallback. Never requires a key.
 - Keep everything zero-cost. Never log simulated income.
