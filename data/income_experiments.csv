@@ -1,4 +1,4 @@
 id,date,name,expected_revenue,effort,status,note,score
 1,2026-08-11,template-pack-listing,79.00,2,active,PUBLIC_LISTING.md + pack_client includes runway/quote/SOW — GitHub public surface live; optional Gumroad paste remains,39.50
-2,2026-08-11,setup-session-offer,149.00,3,active,SOW+checklist ready — NOT marked won (no paid delivery yet; do not fake revenue),49.67
-3,2026-08-11,oss-inbound-help,99.00,2,active,Convert one GitHub issue into paid help,49.50
+2,2026-08-11,setup-session-offer,149.00,3,active,Offer page live (templates/setup_session_offer.md) + SOW/checklist + README CTA — NOT won until real paid delivery,49.67
+3,2026-08-11,oss-inbound-help,99.00,2,active,Convert one GitHub issue/reply into a paid help offer,49.50
