@@ -4,6 +4,19 @@ Personal wealth acceleration using **only free tools**. No paid APIs, no subscri
 
 **Version:** 1.0.2 · **License:** MIT
 
+## Primary offer — Cashflow Setup Session ($149)
+
+**45–60 min live setup.** Offline ledger + runway + one ranked experiment. Same-day report.
+
+→ **[Client-facing offer page](templates/setup_session_offer.md)** (paste-ready)  
+→ SOW: [templates/setup_session_sow.md](templates/setup_session_sow.md) · Checklist: [templates/setup_session_checklist.md](templates/setup_session_checklist.md)
+
+```bash
+python scripts/quote.py --client "Name" --item "Cashflow setup session (45–60 min)" --amount 149 --type quote
+```
+
+Only mark the experiment `won` after real paid delivery. Never fake revenue.
+
 ## Fleet signal (for Singularity Operator)
 
 Machine-readable status for `continuous_roi_rank`:
@@ -70,18 +83,12 @@ python scripts/income_experiment.py suggest   # free-AI optional + heuristic fal
 python scripts/quote.py --client "Acme" --item "Cashflow setup session (45–60 min)" --amount 149 --type quote
 ```
 
-## Setup session (sellable)
-
-| File | Purpose |
-|------|---------|
-| [templates/setup_session_sow.md](templates/setup_session_sow.md) | SOW |
-| [templates/setup_session_checklist.md](templates/setup_session_checklist.md) | Live delivery checklist |
-
 ## Client pack contents
 
-`tracker.py` · `runway.py` · `export.py` · `scripts/quote.py` · `scripts/income_experiment.py` · templates (incl. SOW) · sample data · niches
+`tracker.py` · `runway.py` · `export.py` · `scripts/quote.py` · `scripts/income_experiment.py` · templates (incl. offer + SOW) · sample data · niches
 
 ## Status
 - **v1.0.2:** CURRENCY_STATUS.md fleet signal with live ranked experiments for SO continuous_roi_rank.
+- **Offer page:** `templates/setup_session_offer.md` — client-facing $149 CTA live on main.
 - **v1.0.1:** `suggest` command — free-AI optional with heuristic fallback. Never requires a key.
 - Keep everything zero-cost. Never log simulated income.
