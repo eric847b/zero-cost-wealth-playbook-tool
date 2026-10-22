@@ -2,7 +2,7 @@
 
 **Repo:** eric847b/zero-cost-wealth-playbook-tool  
 **Version:** 1.0.2  
-**Updated:** 2026-10-20  
+**Updated:** 2026-10-22  
 **Preferred currency path:** true
 
 ## Capabilities
@@ -13,10 +13,11 @@
 - quote — Markdown quote/invoice (`scripts/quote.py`)
 - client_pack — offline pack (`scripts/pack_client.py`)
 - public_listing — Gumroad/Lemon free-tier blurb (`PUBLIC_LISTING.md`)
+- setup_session_offer — client-facing $149 offer page (`templates/setup_session_offer.md`)
 
 ## Live ranked open experiments (from data/income_experiments.csv)
 1. **setup-session-offer** — score 49.67 — expected $149 · effort 3 · status active  
-   Next: book/deliver one real setup session; only mark `won` after paid delivery.
+   Offer page + SOW + checklist + README CTA live. Next: book/deliver one real setup session; only mark `won` after paid delivery.
 2. **oss-inbound-help** — score 49.50 — expected $99 · effort 2 · status active  
    Next: convert one GitHub issue/reply into a paid help offer.
 3. **template-pack-listing** — score 39.50 — expected $79 · effort 2 · status active  
@@ -48,8 +49,9 @@
     "income_experiment_suggest",
     "quote",
     "client_pack",
-    "public_listing"
+    "public_listing",
+    "setup_session_offer"
   ],
-  "roi_note": "Prefer currency fleet work: runway velocity, experiment rank/suggest, quote, public listing. Top open experiment: setup-session-offer ($149). Zero paid APIs. Never fake won revenue."
+  "roi_note": "Prefer currency fleet work: runway velocity, experiment rank/suggest, quote, public listing, setup-session offer page. Top open experiment: setup-session-offer ($149). Offer page live. Zero paid APIs. Never fake won revenue."
 }
 ```
