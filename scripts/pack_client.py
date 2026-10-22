@@ -57,7 +57,9 @@ python export.py --client data/ledger.csv
 
 Open the Markdown report → browser **Print → Save as PDF** (free).
 
-## Paid setup (optional)
+## Paid setup session ($149, optional)
+
+Full client-facing offer: `templates/setup_session_offer.md`
 
 If you booked a setup session, your operator follows:
 - `templates/setup_session_sow.md`
@@ -65,7 +67,7 @@ If you booked a setup session, your operator follows:
 
 Free quote/invoice generator:
 ```bash
-python scripts/quote.py --client "Your Name" --item "Cashflow setup session" --amount 149 --type quote
+python scripts/quote.py --client "Your Name" --item "Cashflow setup session (45–60 min)" --amount 149 --type quote
 ```
 
 ## What's inside
@@ -78,7 +80,7 @@ python scripts/quote.py --client "Your Name" --item "Cashflow setup session" --a
 | `scripts/quote.py` | Free quotes & invoices |
 | `scripts/income_experiment.py` | Rank income experiments |
 | `PLAYBOOK.md` | Full zero-cost playbook |
-| `templates/` | Onboarding, SOW, niches, pricing |
+| `templates/` | Offer, SOW, onboarding, niches, pricing |
 | `data/sample_*.csv` | Demo weeks |
 | `LICENSE` | MIT |
 
