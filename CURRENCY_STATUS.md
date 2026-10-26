@@ -1,9 +1,10 @@
 # Currency Status (machine-readable fleet signal)
 
 **Repo:** eric847b/zero-cost-wealth-playbook-tool  
-**Version:** 1.0.2  
-**Updated:** 2026-10-22  
-**Preferred currency path:** true
+**Version:** 1.0.3  
+**Updated:** 2026-10-26  
+**Preferred currency path:** true  
+**Mode:** autonomous · free-only
 
 ## Capabilities
 - tracker — local CSV ledger (`tracker.py`)
@@ -29,6 +30,7 @@
 3. Prefer shipping public listing / client pack / quote tooling over simulated balances.
 4. Never require paid APIs; free-AI suggest is optional.
 5. Never mark experiments `won` without real payment logged in ledger.
+6. Operator has zero income and limited capacity — system stays autonomous; no human outreach required for signal health.
 
 ## Status codes (for fleet)
 - `healthy` — repo public, VERSION present, core scripts present
@@ -37,9 +39,11 @@
 ```json
 {
   "source": "eric847b/zero-cost-wealth-playbook-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "preferred_currency_path": true,
   "status": "healthy",
+  "mode": "autonomous",
+  "free_only": true,
   "top_experiment": "setup-session-offer",
   "top_score": 49.67,
   "capabilities": [
@@ -52,6 +56,6 @@
     "public_listing",
     "setup_session_offer"
   ],
-  "roi_note": "Prefer currency fleet work: runway velocity, experiment rank/suggest, quote, public listing, setup-session offer page. Top open experiment: setup-session-offer ($149). Offer page live. Zero paid APIs. Never fake won revenue."
+  "roi_note": "Prefer currency fleet work: runway velocity, experiment rank/suggest, quote, public listing, setup-session offer page. Top open experiment: setup-session-offer ($149). Offer page live. Zero paid APIs. Autonomous; never fake won revenue."
 }
 ```
